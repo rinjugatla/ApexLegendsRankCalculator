@@ -4,7 +4,6 @@
 }
 
 .container {
-    max-width: 900px;
     border: var(--border-setting);
     border-radius: 10px 10px 10px 10px;
 }
