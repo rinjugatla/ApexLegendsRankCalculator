@@ -1,45 +1,45 @@
 :root {
-    --theme-color: rgb(255, 123, 0);
-    --border-setting: solid 1px var(--theme-color);
+  --theme-color: rgb(255, 123, 0);
+  --border-setting: solid 1px var(--theme-color);
 }
 
 .container {
-    border: var(--border-setting);
-    border-radius: 10px 10px 10px 10px;
+  border: var(--border-setting);
+  border-radius: 10px 10px 10px 10px;
 }
 
 .header {
-    background: var(--theme-color);
-    border-radius: 10px 10px 0px 0px;
-    padding: 15px;
-    font-size: 25px;
+  background: var(--theme-color);
+  border-radius: 10px 10px 0px 0px;
+  padding: 15px;
+  font-size: 25px;
 }
 
 .minus {
-    color: red;
+  color: red;
 }
 
 .plus {
-    color: blue;
+  color: blue;
 }
 
 .result-text {
-    margin-left: 60%;
+  margin-left: 60%;
 }
 
 @media screen and (max-width: 959px) {
-	/* タブレット */
-    .result-text {
-        margin-left: 30%;
-    }
+  /* タブレット */
+  .result-text {
+    margin-left: 30%;
+  }
 }
 @media screen and (max-width: 480px) {
-	/* スマホ */
-    .result-text {
-        margin-left: 30%;
-    }
+  /* スマホ */
+  .result-text {
+    margin-left: 30%;
+  }
 }
 
 .result-point {
-    text-align: right;
+  text-align: right;
 }

@@ -1,45 +1,45 @@
 window.addEventListener('load', loadFunction);
 
-function loadFunction(){
+function loadFunction() {
     loadPrevData();
     registEvent();
     calcRankPoint();
 }
 
 // 前回実行時の値をロード
-function loadPrevData(){
+function loadPrevData() {
     const prevUserData = loadUserData();
-    if(!prevUserData){ return; }
+    if (!prevUserData) { return; }
 
     $('#rank').val(prevUserData.rank);
     $('#division').val(prevUserData.division);
 }
 
 // 現在の値を保存
-function saveCurrentUserData(){
+function saveCurrentUserData() {
     const userData = getUserData();
     saveUserData(userData);
 }
 
 // イベントを追加
-function registEvent(){
+function registEvent() {
     let targets = '#rank, #division, #order, #my-kill-count, #party-kill-count';
-    $(document).on('input', targets, function(){
+    $(document).on('input', targets, function () {
         calcRankPoint();
         saveCurrentUserData();
     });
-    $(document).on('focus', targets, function(){$(this).select()});
+    $(document).on('focus', targets, function () { $(this).select() });
 }
 
 // ランクポイントを計算
-function calcRankPoint(){
+function calcRankPoint() {
     let userData = getUserData();
     let rankPoint = getRankPoint(userData);
     printResult(rankPoint);
 }
 
 // ユーザ入力値を取得
-function getUserData(){
+function getUserData() {
     let userData = {
         rank: $('#rank').val(),
         division: Number($('#division').val()),
@@ -51,13 +51,13 @@ function getUserData(){
 }
 
 // ランクポイントを取得
-function getRankPoint(userData){
-    let enterCost =getEnterCost(userData.rank, userData.division);
+function getRankPoint(userData) {
+    let enterCost = getEnterCost(userData.rank, userData.division);
     let orderPoint = getOrderPoint(userData.order);
     let myKillPoint = getKillPoint(userData.order, userData.myKillCount, true);
     let partyKillPoint = getKillPoint(userData.order, userData.partyKillCount, false);
     let totalPoint = enterCost + orderPoint + myKillPoint + partyKillPoint;
-    
+
     return {
         enterCost: enterCost,
         orderPoint: orderPoint,
@@ -68,7 +68,7 @@ function getRankPoint(userData){
 }
 
 // 入場料を取得
-function getEnterCost(rank, division){
+function getEnterCost(rank, division) {
     const costs = {
         'rookie': [0, 0, 0, 0],
         'bronze': [24, 21, 18, 15],
@@ -86,7 +86,7 @@ function getEnterCost(rank, division){
 
 // 順位ポイントを取得
 // order: 順位
-function getOrderPoint(order){
+function getOrderPoint(order) {
     let orderPoints = [
         // 1位から20位まで
         0, 125, 95, 70, 55, 45, 30, 20, 20, 10, 10, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0,
@@ -100,7 +100,7 @@ function getOrderPoint(order){
 // order: 順位 
 // killCount: キル数
 // isMy: 自分 or パーティ
-function getKillPoint(order, killCount, isMy){
+function getKillPoint(order, killCount, isMy) {
     let orderKillPoints = [
         // 1位から20位まで
         0, 25, 23, 20, 18, 16, 14, 12, 12, 10, 10, 5, 5, 5, 1, 1, 1, 1, 1, 1, 1
@@ -110,7 +110,7 @@ function getKillPoint(order, killCount, isMy){
         'party': [0.4, 0.1, 0.1, 0.08],
     }
     let orderPoint = orderKillPoints[order];
-    let mode = isMy ? 'my': 'party';
+    let mode = isMy ? 'my' : 'party';
     let modifies = orderMmodifies[mode];
 
     let killPoint = 0
@@ -123,17 +123,17 @@ function getKillPoint(order, killCount, isMy){
 }
 
 // ランクポイントを出力
-function printResult(rankPoint){
+function printResult(rankPoint) {
     $('#enter-cost').text(rankPoint.enterCost);
     $('#order-point').text(rankPoint.orderPoint);
     $('#my-kill-point').text(rankPoint.myKillPoint);
     $('#party-kill-point').text(rankPoint.partyKillPoint);
     $('#total-point').text(rankPoint.totalPoint);
 
-    if(rankPoint.totalPoint >= 0){
+    if (rankPoint.totalPoint >= 0) {
         $('#total-point').removeClass('minus');
         $('#total-point').addClass('plus');
-    }else{
+    } else {
         $('#total-point').addClass('minus');
         $('#total-point').removeClass('plus');
     }
