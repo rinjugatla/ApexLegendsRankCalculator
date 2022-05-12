@@ -167,13 +167,12 @@ function updateShareButton(){
     const userData = getUserData();
     const resultData = getResultData();
 
-    const header = 'Apex Legends ランク';
     const rank = `${userData.text.rank}${userData.text.division}`;
-    const score = `${userData.order}位 ${userData.myKillCount}(${userData.partyKillCount})キル`;
+    const score = `${userData.myKillCount}(${userData.partyKillCount})キル ${userData.order}位`;
     const point = `${resultData.totalPoint}ポイント`;
     // const url = 'https://rinjugatla.github.io/ApexLegendsRankCalculator/';
     const tags = `#Apex #Apexランク`;
 
-    const text = `${header}\n${rank}\n${score}\n${point}\n${tags}`;
+    const text = `${rank}\n${score}\n${point}\n${tags}`;
     $('#share-button').attr('data-text', text);
 }
