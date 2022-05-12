@@ -73,43 +73,52 @@
                         style="text-align: right;">
                 </div>
             </div>
+            <div class="form-group">
+                <div class="form-check form-check-inline result-ditail-group">
+                    <input class="form-control result-ditail-checkbox" type="checkbox" id="result-ditail-toggle">
+                    <label class="result-ditail-label" for="result-ditail-toggle">詳細を表示</label>
+                </div>
+            </div>
         </fieldset>
 
-        <div class="result-table">
-            <table>
-                <tbody>
-                    <tr>
-                        <td>
-                            <legend class="result-text">入場料</legend>
-                        </td>
-                        <td><label class="minus result-point" id="enter-cost"></label></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <legend class="result-text">順位ポイント</legend>
-                        </td>
-                        <td><label class="plus result-point" id="order-point"></label></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <legend class="result-text">自分のキルポイント</legend>
-                        </td>
-                        <td><label class="plus result-point" id="my-kill-point"></label></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <legend class="result-text">パーティのキルポイント</legend>
-                        </td>
-                        <td><label class="plus result-point" id="party-kill-point"></label></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <legend class="result-text">合計獲得ポイント</legend>
-                        </td>
-                        <td><label class="result-point" id="total-point"></label></td>
-                    </tr>
-                </tbody>
-            </table>
+        <div>
+
+            <div class="result-table">
+                <table>
+                    <tbody>
+                        <tr class="result-ditail">
+                            <td>
+                                <legend class="result-text">入場料</legend>
+                            </td>
+                            <td><label class="minus result-point" id="enter-cost"></label></td>
+                        </tr>
+                        <tr class="result-ditail">
+                            <td>
+                                <legend class="result-text">順位ポイント</legend>
+                            </td>
+                            <td><label class="plus result-point" id="order-point"></label></td>
+                        </tr>
+                        <tr class="result-ditail">
+                            <td>
+                                <legend class="result-text">自分のキルポイント</legend>
+                            </td>
+                            <td><label class="plus result-point" id="my-kill-point"></label></td>
+                        </tr>
+                        <tr class="result-ditail">
+                            <td>
+                                <legend class="result-text">パーティのキルポイント</legend>
+                            </td>
+                            <td><label class="plus result-point" id="party-kill-point"></label></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <legend class="result-text">合計獲得ポイント</legend>
+                            </td>
+                            <td><label class="result-point" id="total-point"></label></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <footer class="footer">
             ©2022 <a href="https://twitter.com/rin_jugatla" target="_blank" rel="noopener noreferrer">@rin_jugatla</a>

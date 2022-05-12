@@ -24,6 +24,20 @@
   color: blue;
 }
 
+.result-ditail-group {
+  width: 130px;
+  float: right;
+}
+
+.result-ditail-checkbox{
+  width: 30%;
+}
+
+.result-ditail-label{
+  width: auto;
+  margin: 0 0 0 10px;
+}
+
 .result-table {
   display: flex;
   justify-content: flex-end;
