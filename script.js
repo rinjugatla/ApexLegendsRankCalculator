@@ -14,6 +14,9 @@ function loadPrevData() {
 
     $('#rank').val(prevUserData.rank);
     $('#division').val(prevUserData.division);
+    $('#order').val(prevUserData.order);
+    $('#my-kill-count').val(prevUserData.myKillCount);
+    $('#party-kill-count').val(prevUserData.partyKillCount);
 }
 
 // 現在の値を保存
