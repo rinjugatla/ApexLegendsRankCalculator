@@ -1,14 +1,33 @@
 window.addEventListener('load', loadFunction);
 
 function loadFunction(){
+    loadPrevData();
     registEvent();
     calcRankPoint();
+}
+
+// 前回実行時の値をロード
+function loadPrevData(){
+    const prevUserData = loadUserData();
+    if(!prevUserData){ return; }
+
+    $('#rank').val(prevUserData.rank);
+    $('#division').val(prevUserData.division);
+}
+
+// 現在の値を保存
+function saveCurrentUserData(){
+    const userData = getUserData();
+    saveUserData(userData);
 }
 
 // イベントを追加
 function registEvent(){
     let targets = '#rank, #division, #order, #my-kill-count, #party-kill-count';
-    $(document).on('input', targets, function(){calcRankPoint()});
+    $(document).on('input', targets, function(){
+        calcRankPoint();
+        saveCurrentUserData();
+    });
     $(document).on('focus', targets, function(){$(this).select()});
 }
 
