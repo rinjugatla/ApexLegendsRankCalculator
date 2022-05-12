@@ -7,11 +7,7 @@ function loadFunction(){
 
 // イベントを追加
 function registEvent(){
-    $(document).on('change', '#rank', function(){calcRankPoint()});
-    $(document).on('change', '#division', function(){calcRankPoint()});
-    $(document).on('input', '#order', function(){calcRankPoint()});
-    $(document).on('input', '#my-kill-count', function(){calcRankPoint()});
-    $(document).on('input', '#party-kill-count', function(){calcRankPoint()});
+    $(document).on('input', '#rank, #division, #order, #my-kill-count, #party-kill-count', function(){calcRankPoint()});
 }
 
 // ランクポイントを計算
