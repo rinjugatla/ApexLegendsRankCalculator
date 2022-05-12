@@ -7,7 +7,9 @@ function loadFunction(){
 
 // イベントを追加
 function registEvent(){
-    $(document).on('input', '#rank, #division, #order, #my-kill-count, #party-kill-count', function(){calcRankPoint()});
+    let targets = '#rank, #division, #order, #my-kill-count, #party-kill-count';
+    $(document).on('input', targets, function(){calcRankPoint()});
+    $(document).on('focus', targets, function(){$(this).select()});
 }
 
 // ランクポイントを計算
