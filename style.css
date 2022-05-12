@@ -23,25 +23,20 @@
   color: blue;
 }
 
-.result-text {
-  margin-left: 60%;
+.result-table {
+  display: flex;
+  justify-content: flex-end;
 }
 
-@media screen and (max-width: 959px) {
-  /* タブレット */
-  .result-text {
-    margin-left: 30%;
-  }
-}
-@media screen and (max-width: 480px) {
-  /* スマホ */
-  .result-text {
-    margin-left: 30%;
-  }
+.table {
+  table-layout: fixed;
+  width: 50%;
 }
 
 .result-point {
   text-align: right;
+  display: block;
+  font-size: 1.5rem;
 }
 
 .footer {
