@@ -4,6 +4,7 @@ function loadFunction() {
     loadPrevData();
     registEvent();
     calcRankPoint();
+    updateShareButton();
 }
 
 // 前回実行時の値をロード
@@ -27,6 +28,7 @@ function registEvent() {
     $(document).on('input', targets, function () {
         calcRankPoint();
         saveCurrentUserData();
+        updateShareButton();
     });
     $(document).on('focus', targets, function () { $(this).select() });
     $(document).on('change', '#result-ditail-toggle', function () { 
@@ -49,7 +51,12 @@ function getUserData() {
         division: Number($('#division').val()),
         order: Number($('#order').val()),
         myKillCount: Number($('#my-kill-count').val()),
-        partyKillCount: Number($('#party-kill-count').val())
+        partyKillCount: Number($('#party-kill-count').val()),
+
+        text: {
+            rank: $('#rank option:selected').text(),
+            division: $('#division option:selected').text()
+        }
     }
     return userData;
 }
@@ -141,4 +148,32 @@ function printResult(rankPoint) {
         $('#total-point').addClass('minus');
         $('#total-point').removeClass('plus');
     }
+}
+
+// 計算結果を取得
+function getResultData(){
+    const resultData = {
+        enterCost: Number($('#enter-cost').text()),
+        oerderPoint: Number($('#order-point').text()),
+        myKillPoint: Number($('#my-kill-point').text()),
+        partyKillPoint: Number($('#party-kill-point').text()),
+        totalPoint: Number($('#total-point').text())
+    }
+    return resultData;    
+}
+
+// 共有ボタンの要素を更新
+function updateShareButton(){
+    const userData = getUserData();
+    const resultData = getResultData();
+
+    const header = 'Apex Legends ランク';
+    const rank = `${userData.text.rank}${userData.text.division}`;
+    const score = `${userData.order}位 ${userData.myKillCount}(${userData.partyKillCount})キル`;
+    const point = `${resultData.totalPoint}ポイント`;
+    // const url = 'https://rinjugatla.github.io/ApexLegendsRankCalculator/';
+    const tags = `#Apex #Apexランク`;
+
+    const text = `${header}\n${rank}\n${score}\n${point}\n${tags}`;
+    $('#share-button').attr('data-text', text);
 }
