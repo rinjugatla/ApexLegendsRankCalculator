@@ -24,7 +24,20 @@
 }
 
 .result-text {
-    margin-left: 30%;
+    margin-left: 60%;
+}
+
+@media screen and (max-width: 959px) {
+	/* タブレット */
+    .result-text {
+        margin-left: 30%;
+    }
+}
+@media screen and (max-width: 480px) {
+	/* スマホ */
+    .result-text {
+        margin-left: 30%;
+    }
 }
 
 .result-point {
