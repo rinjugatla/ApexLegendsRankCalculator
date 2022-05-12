@@ -1,7 +1,33 @@
+:root {
+    --theme-color: rgb(255, 123, 0);
+    --border-setting: solid 1px var(--theme-color);
+}
+
+.container {
+    max-width: 900px;
+    border: var(--border-setting);
+    border-radius: 10px 10px 10px 10px;
+}
+
+.header {
+    background: var(--theme-color);
+    border-radius: 10px 10px 0px 0px;
+    padding: 15px;
+    font-size: 25px;
+}
+
 .minus {
     color: red;
 }
 
 .plus {
     color: blue;
+}
+
+.result-text {
+    margin-left: 500px;
+}
+
+.result-point {
+    text-align: right;
 }

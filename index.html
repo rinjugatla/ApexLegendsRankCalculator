@@ -18,63 +18,76 @@
 </head>
 
 <body>
-    <h1>シーズン13</h1>
     <div class="container">
+        <div class="row header">
+            <span class="glyphicon glyphicon-log-in" aria-hidden="true">シーズン13 ランクポイント計算</span>
+        </div>
         <fieldset class="form-group">
             <div class="form-group">
                 <legend>ランク</legend>
-                <select id="rank">
-                    <option value="rookie">ルーキー</option>
-                    <option value="bronze">ブロンズ</option>
-                    <option value="silver">シルバー</option>
-                    <option value="gold">ゴールド</option>
-                    <option value="platina">プラチナ</option>
-                    <option value="diamond">ダイアモンド</option>
-                    <option value="master">マスター</option>
-                    <option value="predator">プレデター</option>
-                </select>
+                <div class="input-group">
+                    <select class="form-control" id="rank">
+                        <option value="rookie">ルーキー</option>
+                        <option value="bronze">ブロンズ</option>
+                        <option value="silver">シルバー</option>
+                        <option value="gold">ゴールド</option>
+                        <option value="platina">プラチナ</option>
+                        <option value="diamond">ダイアモンド</option>
+                        <option value="master">マスター</option>
+                        <option value="predator">プレデター</option>
+                    </select>
+                </div>
             </div>
             <div class="form-group">
                 <legend>ディビジョン</legend>
-                <select id="division">
-                    <option value="3">IV</option>
-                    <option value="2">III</option>
-                    <option value="1">II</option>
-                    <option value="0">I</option>
-                </select>
+                <div class="input-group">
+                    <select class="form-control" id="division">
+                        <option value="3">IV</option>
+                        <option value="2">III</option>
+                        <option value="1">II</option>
+                        <option value="0">I</option>
+                    </select>
+                </div>
             </div>
             <div class="form-group">
                 <legend>順位</legend>
-                <input id="order" type="number" value="20" min="1" style="text-align: right;">
+                <div class="input-group">
+                    <input class="form-control" id="order" type="number" value="20" min="1" style="text-align: right;">
+                </div>
+
             </div>
             <div class="form-group">
                 <legend>自分のキル数</legend>
-                <input id="my-kill-count" type="number" value="0" min="0" style="text-align: right;">
+                <div class="input-group">
+                    <input class="form-control" id="my-kill-count" type="number" value="0" min="0" style="text-align: right;">
+                </div>
             </div>
             <div class="form-group">
                 <legend>パーティのキル数</legend>
-                <input id="party-kill-count" type="number" value="0" min="0" style="text-align: right;">
+                <div class="input-group">
+                    <input class="form-control" id="party-kill-count" type="number" value="0" min="0" style="text-align: right;">
+                </div>
             </div>
 
             <div>
-                <legend>入場料</legend>
-                <label class="minus" id="enter-cost"></label>
+                <legend class="result-text">入場料</legend>
+                <p class="minus result-point" id="enter-cost"></p>
             </div>
             <div>
-                <legend>順位ポイント</legend>
-                <label class="plus" id="order-point"></label>
+                <legend class="result-text">順位ポイント</legend>
+                <p class="plus result-point" id="order-point"></p>
             </div>
             <div>
-                <legend>自分のキルポイント</legend>
-                <label class="plus"  id="my-kill-point"></label>
+                <legend class="result-text">自分のキルポイント</legend>
+                <p class="plus result-point" id="my-kill-point"></p>
             </div>
             <div>
-                <legend>パーティのキルポイント</legend>
-                <label class="plus"  id="party-kill-point"></label>
+                <legend class="result-text">パーティのキルポイント</legend>
+                <p class="plus result-point" id="party-kill-point"></p>
             </div>
             <div>
-                <legend>合計獲得ポイント</legend>
-                <label id="total-point"></label>
+                <legend class="result-text">合計獲得ポイント</legend>
+                <p class="result-point" id="total-point"></p>
             </div>
         </fieldset>
     </div>
