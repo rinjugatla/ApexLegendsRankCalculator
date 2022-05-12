@@ -5,6 +5,7 @@ function loadFunction(){
     calcRankPoint();
 }
 
+// イベントを追加
 function registEvent(){
     $(document).on('change', '#rank', function(){calcRankPoint()});
     $(document).on('change', '#division', function(){calcRankPoint()});
@@ -13,7 +14,15 @@ function registEvent(){
     $(document).on('input', '#party-kill-count', function(){calcRankPoint()});
 }
 
+// ランクポイントを計算
 function calcRankPoint(){
+    let userData = getUserData();
+    let rankPoint = getRankPoint(userData);
+    printResult(rankPoint);
+}
+
+// ユーザ入力値を取得
+function getUserData(){
     let userData = {
         rank: $('#rank').val(),
         division: Number($('#division').val()),
@@ -21,16 +30,27 @@ function calcRankPoint(){
         myKillCount: Number($('#my-kill-count').val()),
         partyKillCount: Number($('#party-kill-count').val())
     }
+    return userData;
+}
 
-
+// ランクポイントを取得
+function getRankPoint(userData){
     let enterCost =getEnterCost(userData.rank, userData.division);
     let orderPoint = getOrderPoint(userData.order);
     let myKillPoint = getKillPoint(userData.order, userData.myKillCount, true);
     let partyKillPoint = getKillPoint(userData.order, userData.partyKillCount, false);
-    printResult(enterCost, orderPoint, myKillPoint, partyKillPoint);
+    let totalPoint = enterCost + orderPoint + myKillPoint + partyKillPoint;
+    
+    return {
+        enterCost: enterCost,
+        orderPoint: orderPoint,
+        myKillPoint: myKillPoint,
+        partyKillPoint: partyKillPoint,
+        totalPoint: totalPoint
+    }
 }
 
-// 入場料
+// 入場料を取得
 function getEnterCost(rank, division){
     const costs = {
         'rookie': [0, 0, 0, 0],
@@ -47,7 +67,7 @@ function getEnterCost(rank, division){
     return cost;
 }
 
-// 順位ポイント
+// 順位ポイントを取得
 // order: 順位
 function getOrderPoint(order){
     let orderPoints = [
@@ -59,7 +79,7 @@ function getOrderPoint(order){
     return orderPoint;
 }
 
-// キルポイント
+// キルポイントを取得
 // order: 順位 
 // killCount: キル数
 // isMy: 自分 or パーティ
@@ -85,11 +105,19 @@ function getKillPoint(order, killCount, isMy){
     return Math.ceil(killPoint);
 }
 
-function printResult(enterCost, orderPoint, myKillPoint, partyKillPoint){
-    $('#enter-cost').text(enterCost);
-    $('#order-point').text(orderPoint);
-    $('#my-kill-point').text(myKillPoint);
-    $('#party-kill-point').text(partyKillPoint);
-    let totalPoint = enterCost + orderPoint + myKillPoint + partyKillPoint;
-    $('#total-point').text(totalPoint);
+// ランクポイントを出力
+function printResult(rankPoint){
+    $('#enter-cost').text(rankPoint.enterCost);
+    $('#order-point').text(rankPoint.orderPoint);
+    $('#my-kill-point').text(rankPoint.myKillPoint);
+    $('#party-kill-point').text(rankPoint.partyKillPoint);
+    $('#total-point').text(rankPoint.totalPoint);
+
+    if(rankPoint.totalPoint >= 0){
+        $('#total-point').removeClass('minus');
+        $('#total-point').addClass('plus');
+    }else{
+        $('#total-point').addClass('minus');
+        $('#total-point').removeClass('plus');
+    }
 }
