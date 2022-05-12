@@ -29,6 +29,10 @@ function registEvent() {
         saveCurrentUserData();
     });
     $(document).on('focus', targets, function () { $(this).select() });
+    $(document).on('change', '#result-ditail-toggle', function () { 
+        const isShow = !$(this).prop('checked');
+        $('.result-ditail').prop('hidden', isShow);
+    });
 }
 
 // ランクポイントを計算
