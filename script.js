@@ -130,7 +130,7 @@ function getKillPoint(order, killCount, isMy) {
         killPoint += orderPoint * modify;
     }
 
-    return Math.ceil(killPoint);
+    return Math.round(killPoint);
 }
 
 // ランクポイントを出力
