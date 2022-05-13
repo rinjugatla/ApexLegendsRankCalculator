@@ -207,9 +207,12 @@ function updateChartByOrder() {
     const orders = getRange(1, 20).reverse();
     const baseUserData = getUserData();
     const rankPoints = getRankPointByOrders(orders, baseUserData);
-    let chartData = [];
+    
+    let enterCosts = [];
+    let orderByData = [];
     orders.forEach(order => {
-        chartData.push({ x: order, y: rankPoints[order].totalPoint });
+        enterCosts.push({x: order, y: rankPoints[1].enterCost})
+        orderByData.push({ x: order, y: rankPoints[order].totalPoint });
     });
     
     if (chartByOrder) { chartByOrder.destroy(); }
@@ -220,8 +223,15 @@ function updateChartByOrder() {
         data: {
             labels: orders,
             datasets: [{
+                label: '入場料',
+                data: enterCosts,
+                backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+                borderColor: ['rgba(255, 99, 132, 1)'],
+                borderWidth: 1
+            },
+            {
                 label: '合計獲得ポイント',
-                data: chartData,
+                data: orderByData,
                 backgroundColor: ['rgba(54, 162, 235, 0.2)'],
                 borderColor: ['rgba(54, 162, 235, 1)'],
                 borderWidth: 1
