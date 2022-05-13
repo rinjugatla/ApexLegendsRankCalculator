@@ -5,6 +5,7 @@ function loadFunction() {
     registEvent();
     calcRankPoint();
     updateShareButton();
+    updateChart();
 }
 
 // 前回実行時の値をロード
@@ -32,9 +33,10 @@ function registEvent() {
         calcRankPoint();
         saveCurrentUserData();
         updateShareButton();
+        updateChart();
     });
     $(document).on('focus', targets, function () { $(this).select() });
-    $(document).on('change', '#result-ditail-toggle', function () { 
+    $(document).on('change', '#result-ditail-toggle', function () {
         const isShow = !$(this).prop('checked');
         $('.result-ditail').prop('hidden', isShow);
     });
@@ -79,6 +81,20 @@ function getRankPoint(userData) {
         partyKillPoint: partyKillPoint,
         totalPoint: totalPoint
     }
+}
+
+// orders: list
+// baseUserDataの順位(order)のみ切り替えてランクポイントを計算
+// return {order: killPoint, ...}
+function getRankPointByOrders(orders, baseUserData) {
+    let userData = Object.create(baseUserData);
+    let rankPointsByOrders = {};
+    orders.forEach(order => {
+        userData.order = order;
+        rankPointsByOrders[order] = getRankPoint(userData);
+    });
+
+    return rankPointsByOrders;
 }
 
 // 入場料を取得
@@ -154,7 +170,7 @@ function printResult(rankPoint) {
 }
 
 // 計算結果を取得
-function getResultData(){
+function getResultData() {
     const resultData = {
         enterCost: Number($('#enter-cost').text()),
         oerderPoint: Number($('#order-point').text()),
@@ -162,11 +178,11 @@ function getResultData(){
         partyKillPoint: Number($('#party-kill-point').text()),
         totalPoint: Number($('#total-point').text())
     }
-    return resultData;    
+    return resultData;
 }
 
 // 共有ボタンの要素を更新
-function updateShareButton(){
+function updateShareButton() {
     const userData = getUserData();
     const resultData = getResultData();
 
@@ -178,4 +194,70 @@ function updateShareButton(){
 
     const text = `${rank}\n${score}\n${point}\n${tags}`;
     $('#share-button').attr('data-text', text);
+}
+
+function updateChart() {
+    const orders = getRange(1, 20).reverse();
+    const baseUserData = getUserData();
+    const rankPoints = getRankPointByOrders(orders, baseUserData);
+    let chartData = [];
+    orders.forEach(order => {
+        chartData.push({ x: order, y: rankPoints[order].totalPoint });
+    })
+
+    var complexChartOption = {
+        responsive: true,
+        scales: {
+          y: {
+            scaleLabel: {
+              display: true,
+              labelString: '縦軸ラベル1',
+            },
+          },
+        }
+      };
+
+    const ctx = $('#chart')[0].getContext('2d');
+    let chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: orders,
+            datasets: [{
+                label: '合計獲得ポイント',
+                data: chartData,
+                backgroundColor: ['rgba(54, 162, 235, 0.2)'],
+                borderColor: ['rgba(54, 162, 235, 1)'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: '順位による合計獲得ポイントの変化'
+                }
+            },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: '順位'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'ポイント'
+                    }
+                }
+            }
+        }
+    });
+}
+
+// start -> endの配列を作成
+// https://qiita.com/RyutaKojima/items/168632d4980e65a285f3
+function getRange(start, end) {
+    const range = [...Array((end - start) + 1)].map((_, i) => start + i);
+    return range;
 }

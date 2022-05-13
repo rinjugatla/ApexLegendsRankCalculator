@@ -58,6 +58,10 @@
   text-align: right;
 }
 
+.chart {
+  text-align: center;
+}
+
 .footer {
   text-align: center;
   padding: 10px 0px 30px;
