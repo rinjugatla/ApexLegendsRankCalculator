@@ -6,7 +6,7 @@
 .container {
   margin-top: 10px;
   border: var(--border-setting);
-  border-radius: 10px 10px 10px 10px;
+  border-radius: 10px;
 }
 
 .contents {
@@ -18,12 +18,12 @@
 
 .contents-item2 {
   width: calc(100% / 2 - 20px);
-  margin: 0, 10px, 0, 10px;
+  margin: 0 10px 0 10px;
 }
 
 .contents-item3 {
   width: calc(100% / 3 - 20px);
-  margin: 0, 10px, 0, 10px;
+  margin: 0 10px 0 10px;
 }
 
 .header {
