@@ -196,6 +196,7 @@ function updateShareButton() {
     $('#share-button').attr('data-text', text);
 }
 
+let chartByOrder = null;
 function updateChart() {
     const orders = getRange(1, 20).reverse();
     const baseUserData = getUserData();
@@ -204,9 +205,11 @@ function updateChart() {
     orders.forEach(order => {
         chartData.push({ x: order, y: rankPoints[order].totalPoint });
     });
+    
+    if (chartByOrder) { chartByOrder.destroy(); }
 
     const ctx = $('#chart')[0].getContext('2d');
-    let chart = new Chart(ctx, {
+    chartByOrder = new Chart(ctx, {
         type: 'line',
         data: {
             labels: orders,
