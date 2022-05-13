@@ -9,6 +9,23 @@
   border-radius: 10px 10px 10px 10px;
 }
 
+.contents {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.contents-item2 {
+  width: calc(100% / 2 - 20px);
+  margin: 0, 10px, 0, 10px;
+}
+
+.contents-item3 {
+  width: calc(100% / 3 - 20px);
+  margin: 0, 10px, 0, 10px;
+}
+
 .header {
   background: var(--theme-color);
   border-radius: 10px 10px 0px 0px;
