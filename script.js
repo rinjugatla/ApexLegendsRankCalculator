@@ -203,19 +203,7 @@ function updateChart() {
     let chartData = [];
     orders.forEach(order => {
         chartData.push({ x: order, y: rankPoints[order].totalPoint });
-    })
-
-    var complexChartOption = {
-        responsive: true,
-        scales: {
-          y: {
-            scaleLabel: {
-              display: true,
-              labelString: '縦軸ラベル1',
-            },
-          },
-        }
-      };
+    });
 
     const ctx = $('#chart')[0].getContext('2d');
     let chart = new Chart(ctx, {
