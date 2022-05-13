@@ -40,6 +40,10 @@ function registEvent() {
         const isShow = !$(this).prop('checked');
         $('.result-ditail').prop('hidden', isShow);
     });
+    $(document).on('change', '#result-chart-toggle', function () {
+        const isShow = !$(this).prop('checked');
+        $('#canvas-group').prop('hidden', isShow);
+    });
 }
 
 // ランクポイントを計算
@@ -207,7 +211,7 @@ function updateChartByOrder() {
     const orders = getRange(1, 20).reverse();
     const baseUserData = getUserData();
     const rankPoints = getRankPointByOrders(orders, baseUserData);
-    
+
     let enterCosts = [];
     let orderByData = [];
     orders.forEach(order => {
