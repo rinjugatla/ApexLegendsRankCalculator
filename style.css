@@ -24,16 +24,16 @@
   color: blue;
 }
 
-.result-ditail-group {
-  width: 130px;
+.result-chart-group, .result-ditail-group {
+  width: 160px;
   float: right;
 }
 
-.result-ditail-checkbox {
+.result-chart-checkbox, .result-ditail-checkbox {
   width: 30%;
 }
 
-.result-ditail-label {
+.result-chart-label, .result-ditail-label {
   width: auto;
   margin: 0 0 0 10px;
 }
@@ -56,6 +56,10 @@
 
 .share-group {
   text-align: right;
+}
+
+.chart {
+  text-align: center;
 }
 
 .footer {
