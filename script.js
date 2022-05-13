@@ -196,8 +196,14 @@ function updateShareButton() {
     $('#share-button').attr('data-text', text);
 }
 
+// グラフを更新
+function updateChart(){
+    updateChartByOrder();
+}
+
+// 順位によるポイント変化のグラフを更新
 let chartByOrder = null;
-function updateChart() {
+function updateChartByOrder() {
     const orders = getRange(1, 20).reverse();
     const baseUserData = getUserData();
     const rankPoints = getRankPointByOrders(orders, baseUserData);
