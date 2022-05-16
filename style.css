@@ -30,7 +30,7 @@
   background: var(--theme-color);
   border-radius: 10px 10px 0px 0px;
   padding: 15px;
-  font-size: 25px;
+  font-size: 1.7rem;
 }
 
 .minus {
@@ -82,4 +82,37 @@
 .footer {
   text-align: center;
   padding: 10px 0px 30px;
+}
+
+@media screen and (max-width: 959px) {
+	/* タブレット */
+  .header {
+    font-size: 1.2rem;
+  }
+
+  .contents-item2 {
+    width: calc(100% / 2 - 10px);
+    margin: 0 5px 0 5px;
+  }
+  
+  .contents-item3 {
+    width: calc(100% / 3 - 10px);
+    margin: 0 5px 0 5px;
+  }
+  
+  legend {
+    font-size: 1rem;
+  }
+
+  .form-control {
+    font-size: 0.8rem;
+  }
+
+  .result-point, .result-chart-label, .result-ditail-label {
+    font-size: 0.8rem;
+  }
+}
+@media screen and (max-width: 480px) {
+	/* スマホ用 */
+
 }
