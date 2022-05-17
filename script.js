@@ -253,12 +253,18 @@ function updateChartByOrder() {
                     title: {
                         display: true,
                         text: '順位'
+                    },
+                    grid:{
+                        color: 'rgba(100, 100, 100, 0.3)'
                     }
                 },
                 y: {
                     title: {
                         display: true,
                         text: 'ポイント'
+                    },
+                    grid:{
+                        color: 'rgba(100, 100, 100, 0.3)'
                     }
                 }
             }
